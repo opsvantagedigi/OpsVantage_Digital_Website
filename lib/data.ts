@@ -42,3 +42,27 @@ export const services = [
     className: 'md:col-span-3',
   },
 ];
+
+export const insights = [
+  {
+    slug: 'the-case-for-digital-stewardship',
+    title: 'Beyond the Launch: The Case for Digital Stewardship',
+    date: '2024-05-15',
+    author: 'Ajay Sidal',
+    summary: 'Most agencies disappear after launch day. We argue for a new model: long-term digital stewardship that treats your website as a living asset, not a one-off project.',
+  },
+  {
+    slug: 'why-nextjs-is-the-only-choice-for-serious-saas',
+    title: 'Why Next.js is the Only Choice for Serious SaaS Applications',
+    date: '2024-04-22',
+    author: 'Ajay Sidal',
+    summary: 'A deep dive into the technical advantages of Next.js, from performance to developer experience, and why it’s our default choice for building scalable SaaS products.',
+  },
+  {
+    slug: 'decoupling-content-from-code',
+    title: 'Decoupling Content from Code: The Power of a Headless CMS',
+    date: '2024-03-10',
+    author: 'Ajay Sidal',
+    summary: 'Explore how a headless CMS like Sanity.io can empower your marketing team, streamline workflows, and future-proof your digital content strategy.',
+  },
+];
