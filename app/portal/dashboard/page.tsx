@@ -1,7 +1,7 @@
 import DashboardCard from "@/components/ui/dashboard-card";
 import SystemStatusIndicator from "@/components/ui/system-status-indicator";
 import { Button } from "@/components/ui/button";
-import { Zap, Heartbeat, CalendarClock } from "lucide-react";
+import { Zap, Activity, CalendarClock } from "lucide-react";
 
 const DashboardPage = () => {
   return (

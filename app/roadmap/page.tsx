@@ -1,6 +1,10 @@
 import RoadmapItem from "@/components/ui/roadmap-item";
 
-const roadmapFeatures = [
+const roadmapFeatures: Array<{
+  status: 'Completed' | 'In Progress' | 'Planned';
+  title: string;
+  description: string;
+}> = [
   {
     status: "Completed",
     title: "Phase 1: Foundation & Design System",
