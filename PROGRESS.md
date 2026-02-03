@@ -27,14 +27,15 @@ This document tracks the completion status of the OpsVantage Digital website and
 - [x] **Build the `/contact` Page:**
   - [x] Create a contact form component with fields for name, email, company, and message.
   - [x] Implement a Next.js API route to handle form submissions.
-- [ ] **Build the `/booking` Page:**
-  - [ ] Integrate a third-party scheduling tool (like a Calendly embed) for seamless booking.
+- [x] **Build the `/booking` Page:**
+  - [x] Integrate a third-party scheduling tool (like a Calendly embed) for seamless booking.
 - [ ] **Create Dynamic Case Study Pages (`/work/[slug]`):**
-  - [ ] Design a compelling template to detail the problem, solution, and results for each case study.
-- [ ] **Finalize SEO & Performance:**
-  - [ ] Implement `generateStaticParams` on all dynamic routes to pre-build pages.
-  - [ ] Add dynamic `generateMetadata` functions to all pages for optimal SEO.
-  - [ ] Create `sitemap.xml` and `robots.txt` files.
+- [x] **Create Dynamic Case Study Pages (`/work/[slug]`):**
+  - [x] Design a compelling template to detail the problem, solution, and results for each case study.
+- [x] **Finalize SEO & Performance:**
+  - [x] Implement `generateStaticParams` on all dynamic routes to pre-build pages.
+  - [x] Add dynamic `generateMetadata` functions to all pages for optimal SEO.
+  - [x] Create `sitemap.xml` and `robots.txt` files.
 
 ---
 

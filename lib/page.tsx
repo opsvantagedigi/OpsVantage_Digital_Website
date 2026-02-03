@@ -1,49 +1,63 @@
 import { notFound } from 'next/navigation';
-import { insights } from '@/lib/data';
+import { caseStudies } from '@/lib/data';
 import type { Metadata } from 'next';
 
 // --- Governance Note ---
-// This is the dynamic page template for a single insight/article. It uses
-// `generateMetadata` to ensure each article has unique, SEO-friendly page titles
-// and descriptions. The content is styled with `@tailwindcss/typography` for
-// optimal readability.
+// This is the dynamic page template for a single case study. It follows the
+// "Metric-First Narrative" structure: key results are presented upfront for
+// scannability, followed by the detailed story. This caters to both executive
+// and technical audiences.
 
-interface InsightPageProps {
+interface CaseStudyPageProps {
   params: {
     slug: string;
   };
 }
 
-export async function generateMetadata({ params }: InsightPageProps): Promise<Metadata> {
-  const insight = insights.find((i) => i.slug === params.slug);
-  if (!insight) return {};
-  return { title: insight.title, description: insight.summary };
+export async function generateMetadata({ params }: CaseStudyPageProps): Promise<Metadata> {
+  const study = caseStudies.find((s) => s.slug === params.slug);
+  if (!study) return {};
+  return { title: `${study.client}: ${study.title}`, description: study.description };
 }
 
-export default function InsightPage({ params }: InsightPageProps) {
-  const insight = insights.find((i) => i.slug === params.slug);
+export default function CaseStudyPage({ params }: CaseStudyPageProps) {
+  const study = caseStudies.find((s) => s.slug === params.slug);
 
-  if (!insight) {
+  if (!study) {
     notFound();
   }
 
   return (
     <div className="container py-24 sm:py-32">
       <div className="max-w-3xl mx-auto">
-        <article className="prose prose-invert prose-lg max-w-none">
-          <header>
-            <h1 className="font-orbitron">{insight.title}</h1>
-            <p className="text-muted-foreground">
-              By {insight.author} on {new Date(insight.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-            </p>
-          </header>
+        <header className="mb-12">
+          <p className="font-orbitron text-base font-semibold leading-7 text-primary">{study.client}</p>
+          <h1 className="mt-2 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">{study.title}</h1>
+          <p className="mt-6 text-xl leading-8 text-muted-foreground">{study.description}</p>
+        </header>
 
-          <p>{insight.summary}</p>
+        {study.stats && (
+          <div className="my-12">
+            <h2 className="text-base font-semibold leading-7 text-foreground">Results at a Glance</h2>
+            <div className="mt-4 grid grid-cols-2 gap-8 sm:grid-cols-4">
+              {study.stats.map((stat) => (
+                <div key={stat.label} className="flex flex-col-reverse">
+                  <dt className="text-sm font-medium leading-6 text-muted-foreground">{stat.label}</dt>
+                  <dd className="font-orbitron text-2xl font-semibold leading-9 tracking-tight text-primary">{stat.value}</dd>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
-          {/* Placeholder for full article content */}
-          <p>This is where the full content of the article will go. Like our service detail pages, this content is ideally managed by a Headless CMS like Sanity.io. This allows for rich text editing, image embedding, and code blocks without requiring a developer to intervene for every new post.</p>
-          <p>Adopting this pattern is a core tenet of Digital Stewardship, as it creates a scalable and maintainable content engine for the business.</p>
-        </article>
+        {study.content ? (
+          <article
+            className="prose prose-invert prose-lg max-w-none"
+            dangerouslySetInnerHTML={{ __html: study.content }}
+          />
+        ) : (
+          <p className="text-muted-foreground">Detailed write-up for this case study is coming soon.</p>
+        )}
       </div>
     </div>
   );
