@@ -19,23 +19,18 @@ This document tracks the completion status of the OpsVantage Digital website and
 - [x] Create dynamic routes and a page template for individual services (`/services/[slug]`).
 - [x] Build the Work Page (`/work`) with a grid for case studies.
 - [x] Build the Process Page (`/process`) detailing the four-phase methodology.
-- [x] Create static pages for `Privacy Policy` and `Terms of Service` with SEO-rich content.
-- [x] Establish a centralized data file (`lib/data.ts`) for shared content.
-- [x] **Build the `/insights` Page:**
-  - [x] Design a grid or list layout to display articles.
-  - [x] Create a dynamic route (`/insights/[slug]`) for individual article pages.
-- [x] **Build the `/contact` Page:**
-  - [x] Create a contact form component with fields for name, email, company, and message.
-  - [x] Implement a Next.js API route to handle form submissions.
-- [x] **Build the `/booking` Page:**
-  - [x] Integrate a third-party scheduling tool (like a Calendly embed) for seamless booking.
-- [ ] **Create Dynamic Case Study Pages (`/work/[slug]`):**
-- [x] **Create Dynamic Case Study Pages (`/work/[slug]`):**
-  - [x] Design a compelling template to detail the problem, solution, and results for each case study.
-- [x] **Finalize SEO & Performance:**
-  - [x] Implement `generateStaticParams` on all dynamic routes to pre-build pages.
-  - [x] Add dynamic `generateMetadata` functions to all pages for optimal SEO.
-  - [x] Create `sitemap.xml` and `robots.txt` files.
+- [ ] Build the Pricing Page (`/pricing`).
+- [x] Build the `/insights` Page with a grid or list layout.
+- [x] Create a dynamic route (`/insights/[slug]`) for individual article pages.
+- [x] Build the `/contact` Page with a contact form.
+- [x] Implement a Next.js API route to handle form submissions.
+- [x] Build the `/booking` Page with a third-party scheduling tool.
+- [x] Create static pages for `Privacy Policy` (`/privacy`) and `Terms of Service` (`/terms`).
+- [ ] Create static pages for `Cookie Policy` (`/cookies`), `Disclaimer` (`/disclaimer`), and `Refund Policy` (`/refunds`).
+- [ ] **Finalize SEO & Performance:**
+  - [ ] Implement `generateStaticParams` on all dynamic routes.
+  - [ ] Add dynamic `generateMetadata` functions to all pages.
+  - [ ] Create `sitemap.xml` and `robots.txt` files.
 
 ---
 
