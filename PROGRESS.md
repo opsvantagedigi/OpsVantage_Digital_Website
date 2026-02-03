@@ -26,11 +26,11 @@ This document tracks the completion status of the OpsVantage Digital website and
 - [x] Implement a Next.js API route to handle form submissions.
 - [x] Build the `/booking` Page with a third-party scheduling tool.
 - [x] Create static pages for `Privacy Policy` (`/privacy`) and `Terms of Service` (`/terms`).
-- [ ] Create static pages for `Cookie Policy` (`/cookies`), `Disclaimer` (`/disclaimer`), and `Refund Policy` (`/refunds`).
-- [ ] **Finalize SEO & Performance:**
-  - [ ] Implement `generateStaticParams` on all dynamic routes.
-  - [ ] Add dynamic `generateMetadata` functions to all pages.
-  - [ ] Create `sitemap.xml` and `robots.txt` files.
+- [x] Create static pages for `Cookie Policy` (`/cookies`), `Disclaimer` (`/disclaimer`), and `Refund Policy` (`/refunds`).
+- [x] **Finalize SEO & Performance:**
+  - [x] Implement `generateStaticParams` on all dynamic routes.
+  - [x] Add dynamic `generateMetadata` functions to all pages.
+  - [x] Create `sitemap.xml` and `robots.txt` files.
 
 ---
 

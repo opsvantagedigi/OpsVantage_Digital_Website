@@ -1,31 +1,29 @@
-import Script from 'next/script';
-
 // --- Governance Note ---
-// This page integrates a third-party scheduling tool (Calendly) for booking
-// strategy sessions. It uses the native Next.js <Script> component for optimal
-// performance. The copy is written to be low-pressure and value-oriented,
-// aligning with the "Emotional Awareness" pillar.
+// This is a static page for the Refund Policy. It's crucial for managing
+// client expectations regarding service-based engagements. The content is
+// AI-generated for a digital services business and should be reviewed.
 
-export default function BookingPage() {
+export default function RefundPolicyPage() {
   return (
     <div className="container py-24 sm:py-32">
-      <div className="mb-16 max-w-3xl mx-auto text-center">
-        <h1 className="font-orbitron text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-          Book a Strategy Session
-        </h1>
-        <p className="mt-4 text-lg text-muted-foreground">
-          A complimentary 30-minute session to discuss your goals, challenges, and how OpsVantage Digital can help you build a scalable revenue engine. No pressure, just a productive conversation.
+      <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+        <h1 className="font-orbitron">Refund Policy</h1>
+        <p className="text-muted-foreground">Last updated: {new Date().toLocaleDateString()}</p>
+        <p>
+          At OpsVantage Digital, we are committed to providing our clients with exceptional service and tangible results. Our policies are designed to be fair and transparent.
+        </p>
+        <h2>Digital Services</h2>
+        <p>
+          Due to the nature of our services (including but not limited to web engineering, SaaS development, SEO, and digital stewardship), which involve significant allocation of time, resources, and intellectual property, we do not offer refunds for services that have already been rendered or are in progress.
+        </p>
+        <p>
+          Payments for custom development projects are made in increments as outlined in your specific project proposal or contract. Once a payment for a certain milestone is made, it is non-refundable as it corresponds to work already completed or resources allocated.
+        </p>
+        <h2>Client Satisfaction</h2>
+        <p>
+          If you are unsatisfied with our services, we urge you to contact us immediately. We are committed to working with you to address your concerns and find a mutually agreeable solution, which may include credit for future services or other remedies as we deem appropriate on a case-by-case basis.
         </p>
       </div>
-
-      {/* --- Calendly Embed --- */}
-      {/* Governance: Replace the 'data-url' with your actual Calendly link. */}
-      <div
-        className="calendly-inline-widget"
-        data-url="https://calendly.com/opsvantagedigi/30min"
-        style={{ minWidth: '320px', height: '700px' }}
-      />
-      <Script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async />
     </div>
   );
 }
