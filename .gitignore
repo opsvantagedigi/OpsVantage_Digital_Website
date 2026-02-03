@@ -1,0 +1,17 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# Local Environment Variables
+# CRITICAL: Never commit this file. It contains secrets.
+.env.local
+
+# Build output
+/.next/
+
+# IDE / Editor specific
+.vscode/
+*.swp
