@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
-import { headers } from 'next/headers';
 import { buffer } from 'micro';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
@@ -10,7 +9,7 @@ const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
 
 export async function POST(req: NextRequest) {
   const buf = await buffer(req.body as any);
-  const sig = headers().get('stripe-signature')!;
+  const sig = req.headers.get('stripe-signature')!;
 
   let event: Stripe.Event;
 
