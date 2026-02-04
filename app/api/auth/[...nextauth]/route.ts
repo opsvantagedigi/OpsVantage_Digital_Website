@@ -1,10 +1,12 @@
-import NextAuth from "next-auth";
+import NextAuth, { AuthOptions } from "next-auth/next";
+import { Session, User } from "next-auth";
+import { JWT } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { compare } from "bcryptjs";
 import dbConnect from "@/lib/db";
-import User from "@/models/User";
+import UserModel from "@/models/User";
 
-export const authOptions = {
+export const authOptions: AuthOptions = {
   session: {
     strategy: "jwt",
   },
@@ -21,7 +23,7 @@ export const authOptions = {
       async authorize(credentials, req) {
         await dbConnect();
 
-        const user = await User.findOne({ email: credentials?.email }).select('+password');
+        const user = await UserModel.findOne({ email: credentials?.email }).select('+password');
 
         if (user && credentials?.password) {
           const passwordMatch = await compare(credentials.password, user.password);
@@ -34,14 +36,14 @@ export const authOptions = {
     }),
   ],
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user }: { token: JWT; user: User }) {
       if (user) {
         token.id = user.id;
         token.role = user.role;
       }
       return token;
     },
-    async session({ session, token }) {
+    async session({ session, token }: { session: Session; token: JWT }) {
       if (session.user) {
         session.user.id = token.id as string;
         session.user.role = token.role as string;
@@ -49,6 +51,8 @@ export const authOptions = {
       return session;
     },
   },
+};
+
 const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };

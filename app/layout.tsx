@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Orbitron } from "next/font/google";
-import "./globals.css";
+import "@/styles/globals.css";
 import { cn } from "@/lib/utils";
 import CinematicHeader from "@/components/layout/header";
 import LegacyFooter from "@/components/layout/footer";
@@ -68,21 +68,13 @@ export default function RootLayout({
           inter.variable,
           orbitron.variable
         )}
-      import CinematicHeader from "@/components/layout/header";
-import LegacyFooter from "@/components/layout/footer";
-// ...existing code...
       >
-        import AuthProvider from "@/components/auth-provider";
-// ...existing code...
         <AuthProvider>
           <CinematicHeader />
           <main className="flex-grow">{children}</main>
           <LegacyFooter />
         </AuthProvider>
       </body>
-// ...existing code...
-      </body>
-// ...existing code...
     </html>
   );
 }
