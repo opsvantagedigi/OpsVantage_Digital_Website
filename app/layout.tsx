@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Inter, Orbitron } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import CinematicHeader from "@/components/layout/header";
+import LegacyFooter from "@/components/layout/footer";
+import AuthProvider from "@/components/auth-provider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const orbitron = Orbitron({ subsets: ["latin"], variable: "--font-orbitron" });
