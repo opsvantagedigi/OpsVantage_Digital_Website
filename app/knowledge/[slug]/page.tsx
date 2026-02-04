@@ -1,14 +1,8 @@
 import { client } from "@/sanity/lib/client";
 import { PortableText } from "@portabletext/react";
-import imageUrlBuilder from '@sanity/image-url'
 import { type SanityImageSource } from "@sanity/image-url";
 import Image from "next/image";
-
-const builder = imageUrlBuilder(client)
-
-function urlFor(source: SanityImageSource) {
-  return builder.image(source)
-}
+import { urlFor } from "@/sanity/lib/image";
 
 async function getPost(slug: string) {
   const post = await client.fetch(`*[_type == "post" && slug.current == $slug][0]{
@@ -27,7 +21,7 @@ async function getPost(slug: string) {
 
 const portableTextComponents = {
     types: {
-      image: ({ value }: { value: SanityImageSource }) => <Image src={urlFor(value).url()} alt={value.alt as string || ' '} width={700} height={700} />,
+      image: ({ value }: { value: SanityImageSource & { alt?: string } }) => <Image src={urlFor(value).url()} alt={value.alt || ' '} width={700} height={700} />,
     },
   }
 

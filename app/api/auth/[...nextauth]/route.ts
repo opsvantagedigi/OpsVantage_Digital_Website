@@ -4,7 +4,7 @@ import { compare } from "bcryptjs";
 import dbConnect from "@/lib/db";
 import User from "@/models/User";
 
-const handler = NextAuth({
+export const authOptions = {
   session: {
     strategy: "jwt",
   },

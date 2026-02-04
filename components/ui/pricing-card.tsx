@@ -10,6 +10,7 @@ interface PricingCardProps {
   features: string[];
   isFeatured?: boolean;
   ctaText: string;
+  onCtaClick: () => void;
 }
 
 const PricingCard: React.FC<PricingCardProps> = ({
@@ -19,6 +20,7 @@ const PricingCard: React.FC<PricingCardProps> = ({
   features,
   isFeatured = false,
   ctaText,
+  onCtaClick,
 }) => {
   return (
     <div
@@ -49,9 +51,13 @@ const PricingCard: React.FC<PricingCardProps> = ({
       </div>
       <div className="p-8 mt-auto">
         <Button
-          className="w-full"
-          variant={isFeatured ? 'default' : 'outline'}
-          size="lg"
+          onClick={onCtaClick}
+          className={cn(
+            'w-full font-bold py-3 text-lg font-inter',
+            isFeatured
+              ? 'bg-blue-500 hover:bg-blue-600'
+              : 'bg-gray-700 hover:bg-gray-600'
+          )}
         >
           {ctaText}
         </Button>

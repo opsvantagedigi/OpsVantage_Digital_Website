@@ -23,7 +23,7 @@ async function getService(slug: string) {
 
 const portableTextComponents = {
     types: {
-      image: ({ value }: { value: SanityImageSource }) => <Image src={urlFor(value).url()} alt={value.alt as string || ' '} width={700} height={700} />,
+      image: ({ value }: { value: SanityImageSource & { alt?: string } }) => <Image src={urlFor(value).url()} alt={value.alt || ' '} width={700} height={700} />,
     },
   }
 
@@ -37,7 +37,7 @@ const ServicePage = async ({ params }: { params: { slug: string } }) => {
   return (
     <div className="bg-gray-900 text-white min-h-screen">
         <div className="relative h-96">
-            <Image src={urlFor(service.mainImage).url()} alt={service.title} layout="fill" objectFit="cover" />
+            <Image src={urlFor(service.mainImage).url()} alt={service.title || 'Service Image'} layout="fill" objectFit="cover" />
             <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
                 <h1 className="text-5xl font-orbitron font-bold text-center">{service.title}</h1>
             </div>

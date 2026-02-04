@@ -33,6 +33,23 @@ const DashboardPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const handleManageSubscription = async () => {
+    try {
+      const response = await fetch('/api/portal', {
+        method: 'POST',
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to create portal session');
+      }
+
+      const { url } = await response.json();
+      window.location.href = url;
+    } catch (error) {
+      console.error('Failed to manage subscription:', error);
+    }
+  };
+
   useEffect(() => {
     if (status === 'unauthenticated') {
       router.push('/portal');
@@ -77,9 +94,12 @@ const DashboardPage = () => {
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       <div className="container mx-auto px-4 py-12">
-        <header className="mb-12">
-          <h1 className="text-4xl font-orbitron font-bold">Client Dashboard</h1>
-          <p className="text-lg text-gray-400 font-inter">Welcome back, {session?.user?.name}.</p>
+        <header className="flex justify-between items-center mb-12">
+          <div>
+            <h1 className="text-4xl font-orbitron font-bold">Client Dashboard</h1>
+            <p className="text-lg text-gray-400 font-inter">Welcome back, {session?.user?.name}.</p>
+          </div>
+          <Button onClick={handleManageSubscription}>Manage Subscription</Button>
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

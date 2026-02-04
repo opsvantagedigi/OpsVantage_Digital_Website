@@ -3,6 +3,7 @@ import { PortableText } from "@portabletext/react";
 import { type SanityImageSource } from "@sanity/image-url";
 import Image from "next/image";
 import { CheckCircle } from "lucide-react";
+import { urlFor } from "@/sanity/lib/image";
 
 async function getCaseStudy(slug: string) {
   const study = await client.fetch(`*[_type == "caseStudy" && slug.current == $slug][0]{
@@ -21,7 +22,7 @@ async function getCaseStudy(slug: string) {
 
 const portableTextComponents = {
     types: {
-      image: ({ value }: { value: SanityImageSource }) => <Image src={urlFor(value).url()} alt={value.alt as string || ' '} width={700} height={700} />,
+      image: ({ value }: { value: SanityImageSource & { alt?: string } }) => <Image src={urlFor(value).url()} alt={value.alt || ' '} width={700} height={700} />,
     },
 }
 
@@ -35,7 +36,7 @@ const CaseStudyPage = async ({ params }: { params: { slug: string } }) => {
   return (
     <div className="bg-gray-900 text-white min-h-screen">
         <div className="relative h-[50vh]">
-            <Image src={urlFor(study.mainImage).url()} alt={study.title} layout="fill" objectFit="cover" className="opacity-20" />
+            <Image src={urlFor(study.mainImage).url()} alt={study.title || 'Case Study Image'} layout="fill" objectFit="cover" className="opacity-20" />
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
                 <p className="text-xl font-bold text-blue-400">{study.clientName}</p>
                 <h1 className="text-4xl md:text-6xl font-orbitron font-bold mt-2">{study.title}</h1>

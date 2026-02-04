@@ -21,6 +21,22 @@ const UserSchema = new mongoose.Schema({
     enum: ['client', 'admin'],
     default: 'client',
   },
+  stripeCustomerId: {
+    type: String,
+    unique: true,
+    sparse: true,
+  },
+  stripeSubscriptionId: {
+    type: String,
+    unique: true,
+    sparse: true,
+  },
+  stripePriceId: {
+    type: String,
+  },
+  stripeSubscriptionStatus: {
+    type: String,
+  },
   createdAt: {
     type: Date,
     default: Date.now,
