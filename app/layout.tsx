@@ -69,9 +69,15 @@ export default function RootLayout({
 import LegacyFooter from "@/components/layout/footer";
 // ...existing code...
       >
-        <CinematicHeader />
-        <main className="flex-grow">{children}</main>
-        <LegacyFooter />
+        import AuthProvider from "@/components/auth-provider";
+// ...existing code...
+        <AuthProvider>
+          <CinematicHeader />
+          <main className="flex-grow">{children}</main>
+          <LegacyFooter />
+        </AuthProvider>
+      </body>
+// ...existing code...
       </body>
 // ...existing code...
     </html>
